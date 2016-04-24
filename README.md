@@ -4,6 +4,12 @@
 ## 概要
 Minimapを表示します。
 
+![Sample1](https://github.com/Innsbluck-Redhat/Minimap-Beta-/Minimap-Sample-Images/Sample1)
+
+![Sample2](https://github.com/Innsbluck-Redhat/Minimap-Beta-/Minimap-Sample-Images/Sample2)
+
+![Sample3](https://github.com/Innsbluck-Redhat/Minimap-Beta-/Minimap-Sample-Images/Sample3)
+
 ## 操作
 マップ画像長押し: マップの位置変更の開始/終了
 

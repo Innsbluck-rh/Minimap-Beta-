@@ -4,7 +4,7 @@ var activity = com.mojang.minecraftpe.MainActivity.currentMainActivity.get(),
 
 function newLevel() {
     //ファイルを取ってくる
-    terrain_atlas_file = new java.io.File(android.os.Environment.getExternalStorageDirectory().getAbsolutePath() + "/terrain-atlas.png");
+    terrain_atlas_file = new java.io.File(android.os.Environment.getExternalStorageDirectory().getAbsolutePath() + "/games/com.mojang/Minimap-Images/terrain-atlas.png");
     terrain_atlas_bitmap = android.graphics.BitmapFactory.decodeFile(terrain_atlas_file.getAbsolutePath());
 
     //マップのGUIのセットアップ

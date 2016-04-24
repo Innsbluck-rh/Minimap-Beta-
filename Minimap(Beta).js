@@ -1,3 +1,6 @@
+//Minimap MOD By Innsbluck
+//()
+
 var activity = com.mojang.minecraftpe.MainActivity.currentMainActivity.get(),
     terrain_atlas_file,
     terrain_atlas_bitmap;

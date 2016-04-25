@@ -16,9 +16,9 @@ function newLevel() {
 
 function modTick() {
     //セットアップが終了していれば
-    if (map.isFinishedSetup) {
+    if (map.setupFinished) {
         //更新が終わっているなら再度更新
-        if (!map.isUpdating) {
+        if (!map.updating) {
             map.updateMap();
         }
 
@@ -30,8 +30,8 @@ function modTick() {
 
 var map = function() {
     var members = {};
-    members.isFinishedSetup = false;
-    members.isUpdating = false;
+    members.setupFinished = false;
+    members.updating = false;
     members.radius = 5;
     members.diam = members.radius * 2 + 1;
     members.allBlockBitmaps = {};
@@ -119,7 +119,7 @@ var map = function() {
                     };
 
                     members.gui = my;
-                    members.isFinishedSetup = true;
+                    members.setupFinished = true;
                 } catch (error) {
                     clientMessage(error);
                 }
@@ -160,7 +160,7 @@ var map = function() {
     };
 
     members.updateMap = function() {
-        members.isUpdating = true;
+        members.updating = true;
         var mapBitmap = android.graphics.Bitmap.createBitmap(
                 16 * members.diam,
                 16 * members.diam, android.graphics.Bitmap.Config.ARGB_8888
@@ -208,7 +208,7 @@ var map = function() {
                 members.gui.runUiCode(function() {
                     members.gui.mapImage.setImageBitmap(circleMapBitmap);
                 });
-                members.isUpdating = false;
+                members.updating = false;
             }
         }));
         updatingThread.start();
@@ -225,7 +225,7 @@ var map = function() {
         return true;
     }
 
-    var foundingRenderTypes = [0, 4]
+    var findingRenderTypes = [0, 4, 31]
 
     //最上部のブロックを取得
     members.getTopBlock = function(x, py, z) {
@@ -236,8 +236,8 @@ var map = function() {
                 renderType = Block.getRenderType(id),
                 topId = Level.getTile(x, y + 1, z),
                 topRenderType = Block.getRenderType(topId);
-            if (foundingRenderTypes.indexOf(topRenderType) == -1 &&
-                foundingRenderTypes.indexOf(renderType) != -1) {
+            if (findingRenderTypes.indexOf(topRenderType) == -1 &&
+                findingRenderTypes.indexOf(renderType) != -1) {
                 var damage = Level.getData(x, y, z);
                 return {
                     id: id,
